@@ -2,18 +2,18 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from zipfile import ZipFile
-import wget
+# import wget
 import glob
 
 @st.cache(suppress_st_warning=True)
 def prepareData():
-    if not (glob.glob("98-401-X2016061_English_CSV_data.csv")):
+    # if not (glob.glob("98-401-X2016061_English_CSV_data.csv")):
         # download the openData
-        url = "https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=061"
-        wget.download(url, '98-401-X2016061_eng_CSV.zip')
+        # url = "https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=061"
+        # wget.download(url, '98-401-X2016061_eng_CSV.zip')
         # unzip the zip file
-        with ZipFile('98-401-X2016061_eng_CSV.zip', 'r') as zipObj:
-            zipObj.extractall() 
+        # with ZipFile('98-401-X2016061_eng_CSV.zip', 'r') as zipObj:
+        #     zipObj.extractall() 
 
     rawData = pd.read_csv("98-401-X2016061_English_CSV_data.csv")
     rawData = rawData[~rawData["GEO_NAME"].str.contains("Division")]
