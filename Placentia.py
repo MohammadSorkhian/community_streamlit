@@ -114,7 +114,7 @@ def community(age_STD,population_STD,income_STD,household_STD):
     temp = temp.reset_index(drop=True)
     st.table(temp)
 
-st.header("Placentia-based Project")
+st.header('"Placentia-like" Communities')
 community(age_STD,population_STD,income_STD,household_STD)
 
 
