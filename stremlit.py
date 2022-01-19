@@ -85,6 +85,7 @@ std_household = 5
 step = 5
 min = 0
 max = 100
+st.sidebar.title("Please select the desired deviation from Placentia")
 age_STD = st.sidebar.slider("% age_STD", min_value=min, max_value=max, step=step, value=std_age)
 population_STD = st.sidebar.slider("% population_STD", min_value=min, max_value=max, step=step, value=std_population)
 income_STD = st.sidebar.slider("% income_STD", min_value=min, max_value=max ,step=step, value=std_income)
@@ -112,7 +113,8 @@ def community(age_STD,population_STD,income_STD,household_STD):
     temp = temp.rename(columns={"GEO_NAME":"Community", "Population, 2016":"Population", "Average total income in 2015 among recipients ($)": "Avg income 2015"})
     temp = temp.reset_index(drop=True)
     st.table(temp)
-    
+
+st.header("Placentia-based Project")
 community(age_STD,population_STD,income_STD,household_STD)
 
 
