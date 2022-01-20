@@ -90,10 +90,15 @@ age_STD = st.sidebar.slider("% age_STD", min_value=min, max_value=max, step=step
 population_STD = st.sidebar.slider("% population_STD", min_value=min, max_value=max, step=step, value=std_population)
 income_STD = st.sidebar.slider("% income_STD", min_value=min, max_value=max ,step=step, value=std_income)
 household_STD = st.sidebar.slider("% household_STD", min_value=min, max_value=max, step=step, value=std_household)
+sort_dict = {"Community":"Community", 
+             "Population":"Population",
+             "Percentage_over55":"percentage_over55", 
+             "Avg income 2015":"Avg income 2015",
+             "Average household size":"Average household size"}
 
+sort = st.sidebar.selectbox("sort on:", ["Community","Population","percentage_over55","Avg income 2015","Average household size"], 0)
 
-
-def community(age_STD,population_STD,income_STD,household_STD):
+def community(age_STD,population_STD,income_STD,household_STD, sort ):
 
     temp = data.copy()
 
@@ -111,11 +116,11 @@ def community(age_STD,population_STD,income_STD,household_STD):
 
     temp = temp[["GEO_NAME", "Population, 2016", "percentage_over55", "Average total income in 2015 among recipients ($)", "Average household size"]]
     temp = temp.rename(columns={"GEO_NAME":"Community", "Population, 2016":"Population", "Average total income in 2015 among recipients ($)": "Avg income 2015"})
-    temp = temp.reset_index(drop=True)
+    temp = temp.reset_index(drop=True).sort_values(sort, ascending=True)
     st.table(temp)
 
 st.header('"Placentia-like" Communities')
-community(age_STD,population_STD,income_STD,household_STD)
+community(age_STD,population_STD,income_STD,household_STD, sort)
 
 
 
