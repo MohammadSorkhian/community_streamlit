@@ -43,7 +43,7 @@ def prepareData():
     data = data.drop(["55 to 59 years","60 to 64 years","65 years and over"], axis=1)
     # We eliminated 87 communities that their population was less than 300 and ended up to 193
     data = data.dropna().reset_index().drop("index", axis=1)
-    data["percentage_over55"] = (data["over_55"]/data["Population, 2016"]*100).round(1)
+    data["percentage_over55"] = data["over_55"]/data["Population, 2016"]
     return data
 
 data =prepareData()
@@ -117,6 +117,7 @@ def community(age_STD,population_STD,income_STD,household_STD, sort ):
     temp = temp[["GEO_NAME", "Population, 2016", "percentage_over55", "Average total income in 2015 among recipients ($)", "Average household size"]]
     temp = temp.rename(columns={"GEO_NAME":"Community", "Population, 2016":"Population", "Average total income in 2015 among recipients ($)": "Avg income 2015"})
     temp = temp.reset_index(drop=True).sort_values(sort, ascending=True)
+    temp["percentage_over55"] = (temp["percentage_over55"]*100).round(1)
     st.table(temp)
 
 st.header('"Placentia-like" Communities')
