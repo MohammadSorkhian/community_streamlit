@@ -43,7 +43,7 @@ def prepareData():
     data = data.drop(["55 to 59 years","60 to 64 years","65 years and over"], axis=1)
     # We eliminated 87 communities that their population was less than 300 and ended up to 193
     data = data.dropna().reset_index().drop("index", axis=1)
-    data["percentage_over55"] = data["over_55"]/data["Population, 2016"]
+    data["percentage_over55"] = (data["over_55"]/data["Population, 2016"]*100).round(1)
     return data
 
 data =prepareData()
