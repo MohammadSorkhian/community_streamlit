@@ -125,9 +125,9 @@ if st.sidebar.button("Help"):
 
 if st.session_state.showHelp == "True":
     st.sidebar.markdown('''
-    The purpose of this project is to find communities that have the most similarity to Placentia.
-    - We have four criteria named age(over 55), population, income, household size. The following sliders give you the ability to set desired tolerance from Placentia.
-    - By adjusting the Radius slide and selecting a community, we can see more details about other communities within the Radius range of the selected one. This helps to figure out how many potential employees do we have within the Radius range of the selected community
+    This project aims to find communities that have the most similarity to Placentia.
+    - We have four criteria: age (over 55), population, income, and household size. The following sliders give you the ability to set desired tolerance from Placentia.
+    - By adjusting the Radius slide and selecting a community, we can see more details about other communities within the Radius range of the selected one. This helps to figure out how many potential employees we have within the Radius range of the chosen community.
     ''')
 
 
